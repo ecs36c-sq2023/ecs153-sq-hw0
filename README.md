@@ -20,107 +20,66 @@ The goal of this homework is for you to
 
 ### Introduction
 
-In this assignment, you will develop a C program that can calculate mathematical expressions provided as input strings. The program will support basic arithmetic operations: addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`),  logarithm(`log()`), and exponentiation (`**`). The expressions may include floating-point numbers and will follow the standard mathematical rules for order of operations, including handling of parentheses.
+In this assignment, you will develop a C program that can calculate mathematical expressions provided as input strings. The program will support 
 
-The primary goal of this assignment is to enhance your understanding of string manipulation, control flow, recursion, and the implementation of algorithms in C.
+- Basic unary arithmetic operations: addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`),  mod(`mod()`), and square (`square()`). 
+- Scientific operations: sinOfDegree(`sinOfDegree`) and cosOfDegree(`cosOfDegree`)
+- Self-defined function: getIntPart(`getIntPart`), getDecimalPart(`getDecimalPart`), getXdigit(`getXdigit`), sumFibonacci(`sumFibonacci`), sumIntPart(`sumIntPart`), sumDecimalPart(`sumDecimalPart`), crossMultiply(`crossMultiply`), and factorial(`factorial`).
+
+The expressions may include nagtive number and floating-point numbers and will follow the standard mathematical rules for order of operations, including handling of parentheses. The primary goal of this assignment is to enhance your understanding of string manipulation, control flow, recursion, and the implementation of algorithms in C.
 
 ### File description
 
-Your submission should consist of a single C source file named `expr_evaluator.c`. This file will contain all the necessary code to parse the input expression and compute the result. No separate header files or external libraries (beyond the C standard library) should be used unless specified by your instructor.
+- calculator (`calculator.h/calculator.c`): 
+  - Defines the `MAX_EXPRESSION_LENGTH, MAX_FUNC_LEN, MAX_STACK`
+    - `MAX_EXPRESSION_LENGTH`: maximum length of input string.
+    - `MAX_FUNC_LEN`: maximum length of expression.
+    - `MAX_STACK`: maximum number of operations and digits in the input.
 
+  - You need to implement the struct `Calculator`you will be use in parsing the string and do the calculation. 
+  - Function `parseExpression` will take the struct `Calculator` as input and return the correct result.
 
-
-In this homework, we will write a quicksort as a warm-up to a lot of things, i.e. algorithms, C, CMake, etc. 
-Even better, we would implement sorting with as little knowledge of the type as possible. 
-Simply put, the algorithm barely knows what it is sorting! 
-Well... it does know how to compare two objects.
-
-You will implement the following:
-
-- Quicksort (`quick_sort.c`)
-- Four structs, each has a very different layout, yet all of them can be sorted by the quicksort you wrote.
-- A quicksort driver (`main.c`). You will read from the input stream to create the structs, sort them, and print them out.
-Here are descriptions of the files:
-
-- `GenericTraits.h`/`GenericTraits.c` provides a bunch of functions that each of the structs needs to implement.
-  You can think of "Traits" as contracts, they provide a guarantee to your sorting algorithm and driver as to what can be done about the structs.
-  - `new`: Generate a new struct based on a string.
-  - `dump`: Prints the details of the struct to a file stream. All `dump` should put an extra `\n` when finished.
-  - `cmp`: Compares two instances, returns positive number if larger, negative number is smaller, 0 if equal.
-  - `drop`: Free the memory allocated to this instance.
-- `Int.h`, `Student.h`, `Human.h`, `Rectangle.h` are four structs you need to implement.
-  - `Int` is nothing but a wrapper over `int32_t`. `Int` is sorted based on its value. `Int.h` has an example definition.
-  - `Human` only have one field `name`, which should be a string. `Human` is sorted based on its name.
-  - `Student` inherits from `Human`, it has an extra field called `grade`. 
-  - `Rectangle` contains some macro tricks.
-- `quick_sort.c`: Where your sorting algorithm stays, you will sort them in decending order.
-- `main.c`: The driver to read the file, create objects, call `quick_sort`, and print.
-- All the rest C files: The definition of your structs.
+- `unary.h`/`unary.c` includes basic unary arithmetic operations.
+- `scientific.h`/`scientific.c` includes sinOfDegree(`sinOfDegree`) and cosOfDegree(`cosOfDegree`).
+- `fun.h`/`fun.c` includes Self-defined function: getIntPart(`getIntPart`), getDecimalPart(`getDecimalPart`), getXdigit(`getXdigit`), sumFibonacci(`sumFibonacci`), sumIntPart(`sumIntPart`), sumDecimalPart(`sumDecimalPart`), crossMultiply(`crossMultiply`), and factorial(`factorial`).
+- All operation expression inside the function will be quoted by the parentheses. e.g. `sinOfDegree((1+2))` where expression`(1+2)` will be quoted by the parentheses.
+- `main.c`: The driver to read the file, create objects, call `parseExpression`, and print.
 - `CMakeLists.txt` will compile the whole project. 
 
 ### Input and Output specifications
 
 - Input
   - The program must accept a single string. 
-  - The input string will represent a mathematical expression containing integers, floating-point numbers, and the following operators/functions:
-    - Basic arithmetic operators: `+` (addition), `-` (subtraction), `*` (multiplication), `/` (division)  
-    - Power operator: `**` (exponentiation)  
-    - Logarithm function: `log()` (natural logarithm)  
-    - Parentheses `()` for grouping
-
+  - The input string will represent a mathematical expression containing integers, floating-point numbers, negative number parentheses and the operators/functions mentioned above.
   - The input file ends with an extra `\n`.
-
 - Output
-  - The program should output the result of the mathematical expression to the standard output with a precision of up to three decimal places. 
-  - In case of any errors (e.g., syntax error, division by zero), the program should output `ERROR`.
+  - The program should only output the result of the mathematical expression to the standard output with a precision of up to three decimal places. 
 
 
 ### Programming guide
 
 It's not a must, but its recommended that you follow this guide.
 
-Implement `quick_sort.c` first. 
-You should sort the array IN PLACE, in descending order. 
-Because this algorithm is so basic (also so openly available), you won't get any credit for finishing this. 
-We have already given you declarations, telling you that there are `n` objects, each object satisfies `GenericTraits` in `quick_sort.h`.
+Implement `calculator`and`unary` first.
 
-Then, let's work with a basic `int32_t` wrapper called `Int`. We have provided an example definition of `Int` in `Int.h`, you can use it.
-- `new` will convert a line of string to an integer. The input is guaranteed to be valid.
-- `dump` should output the hexadecimal format that starts with `0x`.
+You will get 40% if you get everything up till here right.
 
-Once you finished `Int`, let's try to put them together in `main`!
-You will read from a file, construct objects from the string you read, call `quick_sort` and print the objects to the file.
-You will get 10% if you get everything up till here right.
+When you're finished with `unary`, you can move on to the more complicated `scientific` and `fun`.  Remember that some function has two parameters and some has only one parameter. The input may contain extra spaces and/or `'\n'` at the end, which you should remove. 
 
-When you're finished with `Int`, you can move on to the more complicated `Human`. 
-`Human` has a `name`, which is a bunch of characters WITHOUT SPACES (' ') OR LINE BREAKS ('\n'). 
-The input may contain extra spaces and/or `'\n'` at the end, which you should remove. 
-`name` should not be longer than `MAX_LEN - 1`, which is 256 bytes. But there is a trailing `\0` to end the string, that means there are at most 255 characters in the `name`. Anything more than that should be removed.
-The input may also contain some words concatenated together by spaces, but you should only use the first word. You can use `strcmp` to compare the strings.
-You will get 20% if you finish `Human` correctly, extra 20% if your code is memory safe.
-To detect memory safety, we use AddressSanatizer (ASan) to detect memory leaks, float free, and buffer overflows.
-You can ask `CMake` to generate a `Makefile` that copmiles your code against ASan by: `cmake -DCMAKE_BUILD_TYPE=asan ..`
+You will get another 100% if you get everything right till here right.
 
-`Student` inherits from `Human`.
-Each line will have a `name` and `grade` separated by ONE space. `grade` is guaranteed to be an integer.
-You should sort `Student` by `grade` first. If the `grades` are equal, compare their `names` using `human`.
-When `dump`, you should put the `name` first, then a space ` `, followed by the `grade`.
-You will get 10% if you finish `Student` correctly, extra 20% if your code is memory safe.
-
-Finally, you may have realized that much of the code in the previous structs is repeated. 
-In `Rectangle`, we attempted to remove this repetition by using macros. Look into `DECLARE_STRUCT` and `DEFINE_STRUCT` in `GenericTraits`. 
-Once you understand them, you should be able to declare `Rectangle` in less than 5 lines in `Rectangle`.h, and the implementation of `Rectangle` should be less exhaustive. 
-Each line of input contains two integers separated by ONE space, representing `height` and `width`, respectively. It's guaranteed that `height` and `width` will be non-negative.
-When using `dump`, you should use the same format as the input. 
-`Rectangle`s are sorted based on their area. If two objects have the same area, compare their `heights`. If their `heights` are also the same, compare their `widths`.
-Your `Rectangle.h` and `Rectangle.c` will only be graded if `DECLARE_STRUCT` and `DEFINE_STRUCT` are used.
-You will get 20% if you finish `Rectangle` using the marcos we provided, and the code has no memory errors.
+- Compile guide
+  - Make a build directory and go to it `mkdir build && cd build`
+  - You can ask `CMake` to generate a `Makefile` that copmiles: `cmake ..`
+  - Compile the project `cmake --build .`
+  - Run the program with given testcases `./Main ../../input/0.txt`
+  - You are encouraged to write more testcases to test your code before submit to the gradescope.
 
 ### Requirements
 
 - For C and header files, you SHOULD NOT modify any code unless you see `/* Your code here ... */` or something similar. Specifically, you SHOULD NOT modify:
   - Any function declarations.
-  - Any `#include`, the files have enough `#include` to write the code. Even if `main.c` doesn't include any struct definitions, with smart function pointers you can work that around.
+  - Any `#include`, the files have enough `#include` to write the code. Even if `main.c` doesn't include any struct definitions.
 - You may modify `CMakeLists.txt` as you wish.
   - Try not to change compiler settings, but you can modify it for debuggin purposes.
   - You should remove the files you didn't finish to avoid a compiler failure.
