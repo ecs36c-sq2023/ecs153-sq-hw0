@@ -1,0 +1,1 @@
+square(cosOfDegree((89.00+sinOfDegree(90)))*(999293.022))
