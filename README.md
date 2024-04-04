@@ -1,6 +1,6 @@
 # Homework 0
 
-> Due: 06-09-2023 11:59:59 PM
+> Due: 05-02-2023 11:59:59 PM
 
 The goal of this homework is for you to
 
@@ -22,7 +22,7 @@ The goal of this homework is for you to
 
 In this assignment, you will develop a C program that can calculate mathematical expressions provided as input strings. The program will support 
 
-- Basic unary arithmetic operations: addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`),  mod(`mod()`), and square (`square()`). 
+- Basic arithmetic operations: addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`),  mod(`mod()`), and square (`square()`). 
 - Scientific operations: sinOfDegree(`sinOfDegree`) and cosOfDegree(`cosOfDegree`)
 - Self-defined function: getIntPart(`getIntPart`), getDecimalPart(`getDecimalPart`), getXdigit(`getXdigit`), sumFibonacci(`sumFibonacci`), sumIntPart(`sumIntPart`), sumDecimalPart(`sumDecimalPart`), crossMultiply(`crossMultiply`), and factorial(`factorial`).
 
@@ -39,7 +39,7 @@ The expressions may include nagtive number and floating-point numbers and will f
   - You need to implement the struct `Calculator`you will be use in parsing the string and do the calculation. 
   - Function `parseExpression` will take the struct `Calculator` as input and return the correct result.
 
-- `unary.h`/`unary.c` includes basic unary arithmetic operations.
+- `basic.h`/`basic.c` includes basic arithmetic operations.
 - `scientific.h`/`scientific.c` includes sinOfDegree(`sinOfDegree`) and cosOfDegree(`cosOfDegree`).
 - `fun.h`/`fun.c` includes Self-defined function: getIntPart(`getIntPart`), getDecimalPart(`getDecimalPart`), getXdigit(`getXdigit`), sumFibonacci(`sumFibonacci`), sumIntPart(`sumIntPart`), sumDecimalPart(`sumDecimalPart`), crossMultiply(`crossMultiply`), and factorial(`factorial`).
 - All operation expression inside the function will be quoted by the parentheses. e.g. `sinOfDegree((1+2))` where expression`(1+2)` will be quoted by the parentheses.
@@ -60,11 +60,11 @@ The expressions may include nagtive number and floating-point numbers and will f
 
 It's not a must, but its recommended that you follow this guide.
 
-Implement `calculator`and`unary` first.
+Implement `calculator`and`basic` first.
 
 You will get 40% if you get everything up till here right.
 
-When you're finished with `unary`, you can move on to the more complicated `scientific` and `fun`.  Remember that some function has two parameters and some has only one parameter. The input may contain extra spaces and/or `'\n'` at the end, which you should remove. 
+When you're finished with `basic`, you can move on to the more complicated `scientific` and `fun`.  Remember that some function has two parameters and some has only one parameter. The input may contain extra spaces and/or `'\n'` at the end, which you should remove. 
 
 You will get another 100% if you get everything right till here right.
 

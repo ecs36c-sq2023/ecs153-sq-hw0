@@ -1,5 +1,5 @@
-#ifndef UNARY_H
-#define UNARY_H
+#ifndef BASIC_H
+#define BASIC_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -57,4 +57,4 @@ int mod(int num1, int num2);
  */
 float square(float num1);
 
-#endif // UNARY_H
+#endif // BASIC_H

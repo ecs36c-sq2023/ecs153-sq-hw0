@@ -3,7 +3,7 @@
 
 #include <fun.h>
 #include <scientific.h>
-#include <unary.h>
+#include <basic.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>

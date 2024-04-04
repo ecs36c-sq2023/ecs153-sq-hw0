@@ -32,7 +32,7 @@ add_executable(Main ${SOURCE_FILES})
 
 add_library(Calculator SHARED
     ${LIB_DIR}/calculator.c
-    ${LIB_DIR}/unary.c
+    ${LIB_DIR}/basic.c
     ${LIB_DIR}/fun.c
     ${LIB_DIR}/scientific.c
 )
