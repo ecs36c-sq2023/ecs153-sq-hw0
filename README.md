@@ -38,12 +38,15 @@ The expressions may include nagtive number and floating-point numbers and will f
 
   - You need to implement the struct `Calculator`you will be use in parsing the string and do the calculation. 
   - Function `parseExpression` will take the struct `Calculator` as input and return the correct result.
-
+  - Function `init_calculator` and `free_Calculator` are used to initilize your structure and clean up.
 - `basic.h`/`basic.c` includes basic arithmetic operations.
 - `scientific.h`/`scientific.c` includes sinOfDegree(`sinOfDegree`) and cosOfDegree(`cosOfDegree`).
 - `fun.h`/`fun.c` includes Self-defined function: getIntPart(`getIntPart`), getDecimalPart(`getDecimalPart`), getXdigit(`getXdigit`), sumFibonacci(`sumFibonacci`), sumIntPart(`sumIntPart`), sumDecimalPart(`sumDecimalPart`), crossMultiply(`crossMultiply`), and factorial(`factorial`).
-- All operation expression inside the function will be quoted by the parentheses. e.g. `sinOfDegree((1+2))` where expression`(1+2)` will be quoted by the parentheses.
-- `main.c`: The driver to read the file, create objects, call `parseExpression`, and print.
+- We are using `gtest` for grading and testing your program, and we have provided two testcases as example in `/src/tests/AutograderTests.cpp`.
+  - Note. those example will NOT be used for grading.
+
+- **All operation expression inside the function will be quoted by the parentheses.** e.g. `sinOfDegree((1+2))` where expression`(1+2)` will be quoted by the parentheses.
+- All function are defined in header file, including descriptions input and return type, please refer to the comment.
 - `CMakeLists.txt` will compile the whole project. 
 
 ### Input and Output specifications
@@ -51,9 +54,10 @@ The expressions may include nagtive number and floating-point numbers and will f
 - Input
   - The program must accept a single string. 
   - The input string will represent a mathematical expression containing integers, floating-point numbers, negative number parentheses and the operators/functions mentioned above.
-  - The input file ends with an extra `\n`.
+  - The input may contain extra spaces.
 - Output
-  - The program should only output the result of the mathematical expression to the standard output with a precision of up to three decimal places. 
+  - The program should only output the result of the mathematical expression to the standard output.
+  - The grading will match the answer with your result in a precision of up to three decimal places.
 
 
 ### Programming guide
@@ -62,18 +66,71 @@ It's not a must, but its recommended that you follow this guide.
 
 Implement `calculator`and`basic` first.
 
-You will get 40% if you get everything up till here right.
+You will get 20% if you can do basic calculation.
 
-When you're finished with `basic`, you can move on to the more complicated `scientific` and `fun`.  Remember that some function has two parameters and some has only one parameter. The input may contain extra spaces and/or `'\n'` at the end, which you should remove. 
+You will get 20% more if you can handle calculation with brackets.
 
-You will get another 100% if you get everything right till here right.
+When you're finished with `basic`, you can move on to the more complicated `scientific` and `fun`.  Remember that some function has two parameters and some has only one parameter. The input may contain extra spaces, which you should remove. 
 
-- Compile guide
-  - Make a build directory and go to it `mkdir build && cd build`
-  - You can ask `CMake` to generate a `Makefile` that copmiles: `cmake ..`
-  - Compile the project `cmake --build .`
-  - Run the program with given testcases `./Main ../../input/0.txt`
-  - You are encouraged to write more testcases to test your code before submit to the gradescope.
+You will get 25% more if you get everything right in `scientific`.
+
+You will get 25% more if you get everything right in `fun`.
+
+Last 10% will test all operations.
+
+#### Function defination
+
+All function are defined in header file, including descriptions input and return type, please refer to the comment.
+
+#### [Unit testing](https://en.wikipedia.org/wiki/Unit_testing)
+
+We use unit testing to do grading in this homework.
+You are also encouraged to write your own unit testing to see if your code works.
+
+The framework we use is [GoogleTest](http://google.github.io/googletest/primer.html).
+GoogleTest is a C++ testing framework, but it also works in C, mostly. 
+("mostly" contains too many corner cases where it is not the case. I don't want to go into that, you can [read it](https://en.wikipedia.org/wiki/Compatibility_of_C_and_C%2B%2B) yourself, but for our use case GoogleTest is good enough)
+Don't panic.
+I have already taken care of the C++ part.
+
+To write a test, you only need to:
+
+```cpp
+TEST(<TestGroup>, <TestName>) {
+    // Your test code.
+    int my_result = 1;
+
+    // The following command to test if you code is running correctly
+    EXPECT_EQ(my_result, 1);
+    EXPECT_TRUE(my_result == 1);
+
+    // ASSERT halt program immediately on error. That means you won't have a change to clean up the memory, leak sanitizer may not be too happy about it.
+    ASSERT_EQ(my_result, 1);
+
+    // Remember to clean up your memory!
+}
+```
+
+GoogleTest will compile all your tests into one single binary executable.
+In this homework, it is `CalculatorTests`.
+Running `CalculatorTests` will execute all tests you have.
+You can also use filters to run only a handful of tests:
+
+```sh
+./CalculatorTests --gtest_filter=<regex>
+```
+
+GoogleTest will find names whose name matchs the [regular expression](https://en.wikipedia.org/wiki/Regular_expression) you provided.
+
+As a result, this homework doesn't have example input and output as well. I wrote some unit tests for you, but that's it. You should come up with your own unit tests, and pass them before submitting.
+
+#### Compile guide
+
+- Make a build directory and go to it `mkdir build && cd build`
+- You can ask `CMake` to generate a `Makefile` that copmiles: `cmake ..`
+- Compile the project `cmake --build .` 
+- There will be a `CalculatorTests`, you can run it to test your code.
+- You are encouraged to write more testcases to test your code before submit to the gradescope.
 
 ### Requirements
 

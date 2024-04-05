@@ -19,8 +19,14 @@ typedef struct Calculator {
   /* Your code here to declare the struct */
 } Calculator;
 
+// Initialize your calculator
+Calculator *init_calculator();
+
 // Parse the mathematical expression given as a string.
 // Returns the result of the expression.
 float parseExpression(Calculator expression);
+
+// Free the calculator
+void free_Calculator(Calculator *calc);
 
 #endif // CALCULATOR_H
