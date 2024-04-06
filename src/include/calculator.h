@@ -16,6 +16,8 @@
 #define MAX_FUNC_LEN 15
 
 typedef struct Calculator {
+  // The expression to be evaluated
+  char expression[MAX_EXPRESSION_LENGTH];
   /* Your code here to declare the struct */
 } Calculator;
 
