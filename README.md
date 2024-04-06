@@ -182,7 +182,8 @@ Use one of the following options to setup your environment.
 
 - Click the following button to setup the environment.
 
-  [![Setup Local Dev Container](https://img.shields.io/static/v1?label=Local%20Dev%20Container&message=Setup&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/ecs36c-sq2023/ECS153-hw0)
+
+​	[![Setup Local Dev Container](https://img.shields.io/static/v1?label=Local%20Dev%20Container&message=Setup&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/ecs36c-sq2023/ECS153-sq-hw0)
 
 - When asked for selecting a Kit to configure CMake, choose **GCC**.
 
