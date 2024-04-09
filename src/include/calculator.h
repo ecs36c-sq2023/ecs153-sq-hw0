@@ -22,11 +22,11 @@ typedef struct Calculator {
 } Calculator;
 
 // Initialize your calculator
-Calculator *init_calculator();
+Calculator *init_calculator(void);
 
 // Parse the mathematical expression given as a string.
 // Returns the result of the expression.
-float parseExpression(Calculator expression);
+float parseExpression(Calculator *expression);
 
 // Free the calculator
 void free_Calculator(Calculator *calc);

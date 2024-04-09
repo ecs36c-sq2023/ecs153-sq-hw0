@@ -37,7 +37,7 @@ The expressions may include nagtive number and floating-point numbers and will f
     - `MAX_STACK`: maximum number of operations and digits in the input.
 
   - You need to implement the struct `Calculator`you will be use in parsing the string and do the calculation. 
-  - Function `parseExpression` will take the struct `Calculator` as input and return the correct result.
+  - Function `parseExpression` will take the pointer of struct `Calculator` as input and return the correct result.
   - Function `init_calculator` and `free_Calculator` are used to initilize your structure and clean up.
 - `basic.h`/`basic.c` includes basic arithmetic operations.
 - `scientific.h`/`scientific.c` includes sinOfDegree(`sinOfDegree`) and cosOfDegree(`cosOfDegree`).
@@ -127,7 +127,7 @@ As a result, this homework doesn't have example input and output as well. I wrot
 #### Compile guide
 
 - Make a build directory and go to it `mkdir build && cd build`
-- You can ask `CMake` to generate a `Makefile` that copmiles: `cmake ..`
+- You can ask `CMake` to generate a `Makefile` that copmiles: `cmake -DCMAKE_BUILD_TYPE=asan ..`
 - Compile the project `cmake --build .` 
 - There will be a `CalculatorTests`, you can run it to test your code.
 - You are encouraged to write more testcases to test your code before submit to the gradescope.
